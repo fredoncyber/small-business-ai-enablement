@@ -22,7 +22,7 @@ jobs:
       - name: Stage only public application assets
         run: |
           mkdir -p public
-          cp web/index.html web/style.css web/core.js web/app.js public/
+          cp web/index.html web/style.css web/core.js web/app.js web/portfolio.html web/portfolio.css public/
       - uses: actions/upload-pages-artifact@v3
         with:
           path: public
