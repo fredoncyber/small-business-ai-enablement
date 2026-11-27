@@ -7,7 +7,8 @@
 ## The problem
 Small businesses often have repetitive customer questions, scattered operating notes, and limited time to prepare reports. This toolkit helps an owner identify one suitable task, create a reviewable AI-assisted draft, and compare the process before and after adoption.
 
-## What works today (v0.1)
+## What works today (v0.2)
+- **Browser toolkit:** Three interactive workflows with fictional examples, prompt copying and estimated labor-value calculations. See [browser demonstration](docs/browser_demo.md). Open `web/index.html` locally; no API key needed. The interface generates prompts, not AI responses.
 - **Customer inquiry drafting:** Converts a sample customer question and an *approved* business facts file into a copy-and-paste prompt. It does **not** automatically send replies or invent business policies.
 - **Operations briefing:** Turns approved event or job details into a prompt for an actionable checklist, with owner verification.
 - **Business metrics:** Reads a CSV of task durations and produces before/after time-saved metrics. Example data are synthetic, not verified real-world results.
