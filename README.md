@@ -25,6 +25,10 @@ python3 -m unittest discover -s tests -v
 ```
 Python 3.10+; standard library only. The program prints drafts and calculations; it never connects to or transmits data to an AI service.
 
+## Public demonstration and community pilot
+- [Public demo deployment instructions](docs/public_demo_setup.md) — hosting must be enabled and verified before advertising a live URL.
+- [Community pilot plan](docs/community_pilot_plan.md) — proposed evaluation, not completed results.
+
 ## Workflow
 1. **Discover:** Fill in `templates/ai_readiness_assessment.md` with the owner.
 2. **Select:** Identify one repetitive, low-risk task with an observable baseline.
