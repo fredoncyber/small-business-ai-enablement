@@ -29,6 +29,9 @@ Python 3.10+; standard library only. The program prints drafts and calculations;
 - [Public demo deployment instructions](docs/public_demo_setup.md) — hosting must be enabled and verified before advertising a live URL.
 - [Community pilot plan](docs/community_pilot_plan.md) — proposed evaluation, not completed results.
 
+## Community workshop
+[90-minute workshop package](workshop/README.md) — facilitator guide, 12-slide outline, participant workbook, exercise key and evaluation form. Prepared, not yet delivered.
+
 ## Workflow
 1. **Discover:** Fill in `templates/ai_readiness_assessment.md` with the owner.
 2. **Select:** Identify one repetitive, low-risk task with an observable baseline.
