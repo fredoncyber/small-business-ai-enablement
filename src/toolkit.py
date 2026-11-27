@@ -2,6 +2,7 @@
 """Offline, standard-library starter toolkit. Does not call AI APIs."""
 import argparse
 import csv
+import math
 from pathlib import Path
 
 
@@ -56,13 +57,18 @@ def analyze_metrics(rows):
             raise ValueError(f"Durations must be finite, nonnegative (row {index})")
         before += old
         after += new
+        if not (math.isfinite(before) and math.isfinite(after)):
+            raise ValueError('Total durations exceed supported numeric range')
         count += 1
     if count == 0:
         raise ValueError("CSV must contain at least one observation")
     saved = before - after
+    percent = (saved / before * 100) if before else None
+    if percent is not None and not math.isfinite(percent):
+        raise ValueError('Percentage exceeds supported numeric range')
     return {"observations": count, "before_minutes": before,
             "after_minutes": after, "saved_minutes": saved,
-            "change_percent": (saved / before * 100) if before else None}
+            "change_percent": percent}
 
 
 def main():
