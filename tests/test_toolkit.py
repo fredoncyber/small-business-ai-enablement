@@ -28,6 +28,12 @@ class TestToolkit(unittest.TestCase):
         with self.assertRaises(ValueError):
             analyze_metrics([{"before_minutes": "-2", "after_minutes": "1"}])
 
+    def test_overflow(self):
+        with self.assertRaises(ValueError):
+            analyze_metrics([{"before_minutes": "1e308", "after_minutes": "0"}] * 2)
+        with self.assertRaises(ValueError):
+            analyze_metrics([{"before_minutes": "5e-324", "after_minutes": "100"}])
+
     def test_zero_baseline(self):
         self.assertIsNone(analyze_metrics([{"before_minutes": "0", "after_minutes": "0"}])["change_percent"])
 
