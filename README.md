@@ -4,6 +4,11 @@
 
 > Independent portfolio project by [fredoncyber](https://github.com/fredoncyber). Not affiliated with or endorsed by OpenAI or its OpenWorks program.
 
+## Professional portfolio
+- [Portfolio landing page source](web/portfolio.html) — open locally or use the deployed Pages site after verification.
+- [Business solution catalog](docs/solution_catalog.md)
+- [Evidence register and application narrative](docs/portfolio_evidence.md)
+
 ## The problem
 Small businesses often have repetitive customer questions, scattered operating notes, and limited time to prepare reports. This toolkit helps an owner identify one suitable task, create a reviewable AI-assisted draft, and compare the process before and after adoption.
 
