@@ -1,0 +1,35 @@
+name: Toolkit CI
+on:
+  push:
+    branches: [main]
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ['3.10', '3.13']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Unit tests
+        run: python -m unittest discover -s tests -v
+      - name: CLI smoke tests
+        run: |
+          python src/toolkit.py inquiry --question 'Can I pick up Saturday?' --facts examples/approved_business_facts.txt
+          python src/toolkit.py operations --details examples/program_details.txt
+          python src/toolkit.py metrics --csv examples/synthetic_time_study.csv
+      - name: Check documentation targets
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import re
+          for doc in [Path('README.md'), *Path('docs').glob('*.md')]:
+              for target in re.findall(r'\]\(([^)]+)\)', doc.read_text()):
+                  if '://' not in target and not target.startswith('#'):
+                      assert (doc.parent / target.split('#')[0]).exists(), (doc, target)
+          PY
