@@ -1,0 +1,8 @@
+const test=require("node:test"),a=require("node:assert/strict"),{inquiry,operations,metrics}=require("./core.js");
+test("inquiry controls",()=>{const p=inquiry("Saturday?","Mon–Fri");a.match(p,/Mon–Fri/);a.match(p,/untrusted/);a.match(p,/approval/);});
+test("invalid text",()=>{a.throws(()=>inquiry(" ","facts"));a.throws(()=>operations("x".repeat(12001)));});
+test("operations controls",()=>{const p=operations("Venue TBD");a.match(p,/Venue TBD/);a.match(p,/approval/);});
+test("illustrative calculation",()=>a.deepEqual(metrics(30,15,20,25,20),{saved:15,percent:50,hours:5,gross:125,net:105}));
+test("regressions",()=>a.equal(metrics(10,20,6,30,5).net,-35));
+test("zero baseline",()=>a.equal(metrics(0,5,1,10,0).percent,null));
+test("invalid numbers",()=>{for(const x of ["",-1,Infinity,NaN,null,true])a.throws(()=>metrics(x,1,1,1,1));a.throws(()=>metrics(1,1,1.5,1,1));});

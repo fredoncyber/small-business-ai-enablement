@@ -33,3 +33,13 @@ jobs:
                   if '://' not in target and not target.startswith('#'):
                       assert (doc.parent / target.split('#')[0]).exists(), (doc, target)
           PY
+
+  browser-core:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: node --test web/core.test.js
+      - run: node --check web/app.js
