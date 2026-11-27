@@ -28,7 +28,7 @@ jobs:
           python - <<'PY'
           from pathlib import Path
           import re
-          for doc in [Path('README.md'), *Path('docs').glob('*.md')]:
+          for doc in [Path('README.md'), *Path('docs').glob('*.md'), *Path('workshop').glob('*.md'), *Path('templates').glob('*.md')]:
               for target in re.findall(r'\]\(([^)]+)\)', doc.read_text()):
                   if '://' not in target and not target.startswith('#'):
                       assert (doc.parent / target.split('#')[0]).exists(), (doc, target)

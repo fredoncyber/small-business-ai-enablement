@@ -6,3 +6,5 @@ test("illustrative calculation",()=>a.deepEqual(metrics(30,15,20,25,20),{saved:1
 test("regressions",()=>a.equal(metrics(10,20,6,30,5).net,-35));
 test("zero baseline",()=>a.equal(metrics(0,5,1,10,0).percent,null));
 test("invalid numbers",()=>{for(const x of ["",-1,Infinity,NaN,null,true])a.throws(()=>metrics(x,1,1,1,1));a.throws(()=>metrics(1,1,1.5,1,1));});
+test('overflowing percentage rejected',()=>a.throws(()=>metrics(Number.MIN_VALUE,100,1,1,0)));
+test('zero frequency and ongoing cost',()=>a.equal(metrics(10,5,0,20,4).net,-4));
